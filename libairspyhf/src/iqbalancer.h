@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2016-2018, Youssef Touil <youssef@airspy.com>
+Copyright (c) 2016-2023, Youssef Touil <youssef@airspy.com>
 Copyright (c) 2018, Leif Asbrink <leif@sm5bsz.com>
 
 All rights reserved.
@@ -49,7 +49,7 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
 	#define FFTOverlap 1
 	#define CorrelationIntegration 4
 #else
-	#define BuffersToSkip 1
+	#define BuffersToSkip 2
 	#define FFTIntegration 4
 	#define FFTOverlap 2
 	#define CorrelationIntegration 16
@@ -62,7 +62,7 @@ typedef airspyhf_complex_float_t complex_t;
 ADDAPI struct iq_balancer_t * ADDCALL iq_balancer_create(float initial_phase, float initial_amplitude);
 ADDAPI void ADDCALL iq_balancer_set_optimal_point(struct iq_balancer_t *iq_balancer, float w);
 ADDAPI void ADDCALL iq_balancer_configure(struct iq_balancer_t *iq_balancer, int buffers_to_skip, int fft_integration, int fft_overlap, int correlation_integration);
-ADDAPI void ADDCALL iq_balancer_process(struct iq_balancer_t *iq_balancer, complex_t* iq, int length);
+ADDAPI void ADDCALL iq_balancer_process(struct iq_balancer_t *iq_balancer, complex_t* iq, int length, uint8_t skip_eval);
 ADDAPI void ADDCALL iq_balancer_destroy(struct iq_balancer_t *iq_balancer);
 
 #endif
